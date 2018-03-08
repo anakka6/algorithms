@@ -1,6 +1,16 @@
 #!/usr/bin/python2.6
 
-A = [1,3,5,2,4,6]
+#A = [1,3,5,2,4,6]
+#A = [7,1,6,5,2,4,3,8]
+#A = [5,4,11,8,7,12,2,6,10,3,9,1]
+
+with open('/home/anakka/Desktop/Algorithms/lessnum.txt','r') as file:
+	A = file.readlines()
+
+# for i in range(len(B)):
+# 	print B[i]
+
+#print len(B)
 
 def MergeAndCountSplitInversions(C,D):
 	n = len(C) + len(D)
@@ -16,14 +26,13 @@ def MergeAndCountSplitInversions(C,D):
 			else:
 				B[k] = D[j]
 				j = j+1
-				splitInv = splitInv +(len(C) - i)
+				splitInv = splitInv +(len(C)-i)
 		elif i>= len(C):
 			B[k] = D[j]
 			j = j+1
 		elif j>= len(D):
 			B[k] = C[i]
 			i=i+1
-			splitInv = splitInv +1
 	return B,splitInv
 
 def sortAndCountInversions(A):
@@ -50,13 +59,23 @@ def sortAndCountInversions(A):
 				A2[i] = A[i+len(A)/2]
 			A2[i+1] = A[n-1]
 		C,leftInv = sortAndCountInversions(A1)
-		# print "printing C"
-		# for i in range(len(C)):
-		# 	print C[i]
 		D,rightInv = sortAndCountInversions(A2)
 		B, splitInv = MergeAndCountSplitInversions(C,D)
+		#print "Still running"
 		return (B,(leftInv+rightInv+splitInv))
 
 
-print sortAndCountInversions(A)
+X,y = sortAndCountInversions(A)
+print "Inversions from MergeSort:",y
 
+def bruteForce(A):
+	n = len(A)
+	numInv = 0
+	for i in range(n-1):
+		for j in range(i+1,n):
+			if A[i] > A[j]:
+				numInv = numInv +1
+				#print "numInv:",numInv
+	return numInv
+
+print "Inversions from BruceForce:",bruteForce(A)
