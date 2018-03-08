@@ -1,16 +1,10 @@
 #!/usr/bin/python2.6
 
-#A = [1,3,5,2,4,6]
-#A = [7,1,6,5,2,4,3,8]
-#A = [5,4,11,8,7,12,2,6,10,3,9,1]
-
-with open('/home/anakka/Desktop/Algorithms/lessnum.txt','r') as file:
+with open('/home/anakka/Desktop/Algorithms/num.txt','r') as file:
 	A = file.readlines()
 
-# for i in range(len(B)):
-# 	print B[i]
-
-#print len(B)
+for i in range(len(A)):
+	A[i] = int(A[i])
 
 def MergeAndCountSplitInversions(C,D):
 	n = len(C) + len(D)
@@ -61,7 +55,6 @@ def sortAndCountInversions(A):
 		C,leftInv = sortAndCountInversions(A1)
 		D,rightInv = sortAndCountInversions(A2)
 		B, splitInv = MergeAndCountSplitInversions(C,D)
-		#print "Still running"
 		return (B,(leftInv+rightInv+splitInv))
 
 
@@ -75,7 +68,4 @@ def bruteForce(A):
 		for j in range(i+1,n):
 			if A[i] > A[j]:
 				numInv = numInv +1
-				#print "numInv:",numInv
 	return numInv
-
-print "Inversions from BruceForce:",bruteForce(A)
