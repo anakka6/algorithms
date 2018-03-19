@@ -3,8 +3,8 @@
 with open('/home/anakka/Desktop/Algorithms/num.txt','r') as file:
 	A = file.readlines()
 
-for i in range(len(A)):
-	A[i] = int(A[i])
+#for i in range(len(A)):
+#	A[i] = int(A[i])
 
 def MergeAndCountSplitInversions(C,D):
 	n = len(C) + len(D)
@@ -14,6 +14,12 @@ def MergeAndCountSplitInversions(C,D):
 	splitInv = 0
 	for k in range(n):
 		if i <len(C) and j < len(D):
+			if (int(C[i]) > int(D[j])):
+			    if (C[i] <= D[j]):
+				    print C[i], D[j]
+				    print len(C[i]), len(D[j])
+				    exit(0)
+			
 			if C[i] < D[j]:
 				B[k] = C[i]
 				i = i+1
