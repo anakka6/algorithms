@@ -8,11 +8,11 @@ def mergeSort(A):
 		return A
 	else:
 		B = [ 0 for x in range(len(A))]
-		A1 = [0 for x in range(len(A)/2)]
-		A2 = [0 for x in range(len(A)/2)]
-		for i in range(len(A)/2):
+		A1 = [0 for x in range(int(len(A)/2))]
+		A2 = [0 for x in range(int(len(A)/2))]
+		for i in range(int(len(A)/2)):
 			A1[i] = A[i]
-			A2[i] = A[i+len(A)/2]
+			A2[i] = A[i+int(len(A)/2)]
 		A1 = mergeSort(A1)
 		A2 = mergeSort(A2)
 		i=0
@@ -37,4 +37,4 @@ def mergeSort(A):
 B = mergeSort(A)
 
 for k in range(len(B)):
-	print B[k]
+	print(B[k])
